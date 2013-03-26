@@ -27,25 +27,41 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	@Override
 	public T obterPrimeiro() {
 		// TODO Auto-generated method stub
-		return null;
+		T primeiro = obterPosicao(0);
+		return primeiro;
 	}
 
 	@Override
 	public T obterUltimo() {
 		// TODO Auto-generated method stub
-		return null;
+		T Ultimo = obterPosicao(obterTamanho()-1);
+		return Ultimo;
 	}
 
 	@Override
 	public T obterPosicao(int posicao) {
 		// TODO Auto-generated method stub
-		return null;
+		int cont=-1;
+		T corredor = new Nodo<T>();
+		corredor = inicio;
+		while (corredor.proximo!= null&cont!=posicao){
+			corredor=corredor.proximo;
+			cont++;
+		}
+		return corredor;
 	}
 
 	@Override
 	public int obterTamanho() {
-		// TODO Auto-generated method stub
-		return 0;
+		// TODO Auto-generated method stub		
+		int tamanho=0;
+		Nodo<T> corredor = new Nodo<T>();
+		corredor = inicio;
+		while (corredor.proximo != null) {
+			corredor = corredor.proximo;
+			tamanho++;
+		}
+		return tamanho;
 	}
 
 	@Override

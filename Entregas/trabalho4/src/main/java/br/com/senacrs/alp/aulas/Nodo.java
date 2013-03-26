@@ -1,4 +1,4 @@
-package br.com.senacrs.alp.aulas;
+package src.main.java.br.com.senacrs.alp.aulas;
 
 public class Nodo<T> {
 	public T conteudo;
