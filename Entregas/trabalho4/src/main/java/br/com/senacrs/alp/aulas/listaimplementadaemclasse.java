@@ -1,6 +1,7 @@
 package br.com.senacrs.alp.aulas;
 
 import br.com.senacrs.alp.aulas.Lista;
+import br.com.senacrs.alp.aulas.Nodo;
 
 public class listaimplementadaemclasse<T> implements Lista<T>{
 
@@ -9,7 +10,7 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	@Override
 	public void adicionarFinal(T valor) {
 		// TODO Auto-generated method stub
-		adicionarPosicao(obterTamanho()-1, valor);
+		adicionarPosicao(obterTamanho(), valor);
 	}
 
 	@Override
@@ -23,29 +24,39 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 		// TODO Auto-generated method stub
 		Nodo<T> novo = new Nodo<T>();
 		Nodo<T> corredor;
-		int cont = -1;
-		corredor = obterPosicao(posicao-1);
-		novo.proximo=corredor.proximo;
+		if (valor == null){
+			throw new IllegalArgumentException();
+		}
+		if (posicao < 0){
+			throw new IllegalArgumentException();
+		}
+		if (posicao > obterTamanho()){
+			throw new IllegalArgumentException();
+		}
 		novo.conteudo=valor;
+		corredor = obterNodoPosicao(posicao-1);
+		novo.proximo=corredor.proximo;
 		corredor.proximo=novo;
 	}
 
 	@Override
-	public Nodo<T> obterPrimeiro() {
+	public T obterPrimeiro() {
 		// TODO Auto-generated method stub
-		Nodo<T> primeiro = obterPosicao(0);
-		return primeiro;
+		Nodo<T> primeiro = obterNodoPosicao(0);
+		T resultado = primeiro.conteudo;
+		return resultado;
 	}
 
 	@Override
-	public Nodo<T> obterUltimo() {
+	public T obterUltimo() {
 		// TODO Auto-generated method stub
-		Nodo<T> Ultimo = obterPosicao(obterTamanho()-1);
-		return Ultimo;
+		Nodo<T> Ultimo = obterNodoPosicao(obterTamanho()-1);
+		T resultado = Ultimo.conteudo;
+		return resultado;
 	}
 
 	@Override
-	public Nodo<T> obterPosicao(int posicao) {
+	public Nodo<T> obterNodoPosicao(int posicao) {
 		// TODO Auto-generated method stub
 		int cont=-1;
 		Nodo<T> corredor = new Nodo<T>();
@@ -73,11 +84,18 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	@Override
 	public T removerPosicao(int posicao) {
 		// TODO Auto-generated method stub
-		Nodo<T> corredor=obterPosicao(posicao-1);
+		Nodo<T> corredor=obterNodoPosicao(posicao-1);
+		if (posicao < 0){
+			throw new IllegalArgumentException();
+		}
+		if (posicao > obterTamanho()){
+			throw new IllegalArgumentException();
+		}
 		Nodo<T> lixo=corredor.proximo;
 		corredor.proximo=lixo.proximo;
 		lixo.proximo=null;
-		return null;
+		T resultado=lixo.conteudo;
+		return resultado;
 	}
 
 	@Override
@@ -88,6 +106,14 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 		for (x=-1;x<y;x++){
 			removerPosicao(x);
 		}
+	}
+
+	@Override
+	public T obterPosicao(int posicao) {
+		// TODO Auto-generated method stub
+		Nodo<T> corredor = obterNodoPosicao(posicao);
+		T resultado = corredor.conteudo;
+		return resultado;
 	}
 	
 }
