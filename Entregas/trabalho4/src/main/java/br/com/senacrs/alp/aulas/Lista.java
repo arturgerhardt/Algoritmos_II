@@ -8,15 +8,15 @@ public interface Lista<T extends Object> {
 
 	void adicionarPosicao(int posicao, T valor);
 
-	T obterPrimeiro();
+	Nodo<T> obterPrimeiro();
 	
-	T obterUltimo();
+	Nodo<T> obterUltimo();
 	
-	T obterPosicao(int posicao);
+	Nodo<T> obterPosicao(int posicao);
 	
 	int obterTamanho();
 
-	T removerPosicao(int posicao);
+	Nodo<T> removerPosicao(int posicao);
 	
 	void esvaziar();
 }

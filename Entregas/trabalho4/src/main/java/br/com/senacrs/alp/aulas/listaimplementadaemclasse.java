@@ -9,42 +9,48 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	@Override
 	public void adicionarFinal(T valor) {
 		// TODO Auto-generated method stub
-		
+		adicionarPosicao(obterTamanho()-1, valor);
 	}
 
 	@Override
 	public void adicionarInicio(T valor) {
 		// TODO Auto-generated method stub
-		
+		adicionarPosicao(0, valor);
 	}
 
 	@Override
 	public void adicionarPosicao(int posicao, T valor) {
 		// TODO Auto-generated method stub
-		
+		Nodo<T> novo = new Nodo<T>();
+		Nodo<T> corredor;
+		int cont = -1;
+		corredor = obterPosicao(posicao-1);
+		novo.proximo=corredor.proximo;
+		novo.conteudo=valor;
+		corredor.proximo=novo;
 	}
 
 	@Override
-	public T obterPrimeiro() {
+	public Nodo<T> obterPrimeiro() {
 		// TODO Auto-generated method stub
-		T primeiro = obterPosicao(0);
+		Nodo<T> primeiro = obterPosicao(0);
 		return primeiro;
 	}
 
 	@Override
-	public T obterUltimo() {
+	public Nodo<T> obterUltimo() {
 		// TODO Auto-generated method stub
-		T Ultimo = obterPosicao(obterTamanho()-1);
+		Nodo<T> Ultimo = obterPosicao(obterTamanho()-1);
 		return Ultimo;
 	}
 
 	@Override
-	public T obterPosicao(int posicao) {
+	public Nodo<T> obterPosicao(int posicao) {
 		// TODO Auto-generated method stub
 		int cont=-1;
-		T corredor = new Nodo<T>();
+		Nodo<T> corredor = new Nodo<T>();
 		corredor = inicio;
-		while (corredor.proximo!= null&cont!=posicao){
+		while (corredor.proximo!=null & cont!=posicao){
 			corredor=corredor.proximo;
 			cont++;
 		}
@@ -67,13 +73,21 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	@Override
 	public T removerPosicao(int posicao) {
 		// TODO Auto-generated method stub
+		Nodo<T> corredor=obterPosicao(posicao-1);
+		Nodo<T> lixo=corredor.proximo;
+		corredor.proximo=lixo.proximo;
+		lixo.proximo=null;
 		return null;
 	}
 
 	@Override
 	public void esvaziar() {
 		// TODO Auto-generated method stub
-		
+		int x,y;
+		y=obterTamanho();
+		for (x=-1;x<y;x++){
+			removerPosicao(x);
+		}
 	}
 	
 }
