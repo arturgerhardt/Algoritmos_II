@@ -42,16 +42,14 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	@Override
 	public T obterPrimeiro() {
 		// TODO Auto-generated method stub
-		Nodo<T> primeiro = obterNodoPosicao(0);
-		T resultado = primeiro.conteudo;
+		T resultado = obterPosicao(0);
 		return resultado;
 	}
 
 	@Override
 	public T obterUltimo() {
 		// TODO Auto-generated method stub
-		Nodo<T> Ultimo = obterNodoPosicao(obterTamanho()-1);
-		T resultado = Ultimo.conteudo;
+		T resultado = obterPosicao(obterTamanho()-1);;
 		return resultado;
 	}
 
@@ -88,7 +86,7 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 		if (posicao < 0){
 			throw new IllegalArgumentException();
 		}
-		if (posicao > obterTamanho()){
+		if (posicao >= obterTamanho()){
 			throw new IllegalArgumentException();
 		}
 		Nodo<T> lixo=corredor.proximo;
@@ -101,16 +99,19 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	@Override
 	public void esvaziar() {
 		// TODO Auto-generated method stub
-		int x,y;
-		y=obterTamanho();
-		for (x=-1;x<y;x++){
+		int x = obterTamanho()-1;
+		while (x!=-1){
 			removerPosicao(x);
+			x--;
 		}
 	}
 
 	@Override
 	public T obterPosicao(int posicao) {
 		// TODO Auto-generated method stub
+		if (obterTamanho()==0){
+			throw new IllegalArgumentException();
+		}
 		Nodo<T> corredor = obterNodoPosicao(posicao);
 		T resultado = corredor.conteudo;
 		return resultado;
