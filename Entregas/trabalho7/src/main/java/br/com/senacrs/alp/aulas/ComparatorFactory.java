@@ -22,7 +22,7 @@ public class ComparatorFactory {
 		
 		Comparator<String> resultado = null;
 		
-		//implementar
+		resultado = new StringComparator();
 		
 		return resultado;
 	}
