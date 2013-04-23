@@ -11,7 +11,7 @@ public class Factory {
 	
 		Funcionario resultado = null;
 		
-		//implementar
+		resultado = new FuncaoFuncionario(nome, departamento, salario);
 		
 		return resultado;
 	}
@@ -20,7 +20,7 @@ public class Factory {
 	
 		Departamento resultado = null;
 		
-		//implementar
+		resultado = new FuncaoDepartamento(nome, empresa);
 		
 		return resultado;
 	}
@@ -29,7 +29,7 @@ public class Factory {
 	
 		Empresa resultado = null;
 		
-		//implementar
+		resultado = new FuncaoEmpresa(nome);
 		
 		return resultado;
 	}
