@@ -11,7 +11,7 @@ public class Factory {
 	
 		ValidarRequisicaoGet resultado = null;
 		
-		//implementar
+		resultado = new FazerValidacao();
 		
 		return resultado;
 	}
