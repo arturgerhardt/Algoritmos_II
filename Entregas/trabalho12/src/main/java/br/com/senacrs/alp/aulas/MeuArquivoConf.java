@@ -2,6 +2,13 @@ package br.com.senacrs.alp.aulas;
 
 public class MeuArquivoConf implements Configuracao {
 
+	private ArquivoConfiguracao config;
+
+	public MeuArquivoConf(ArquivoConfiguracao config){
+	
+		this.config = config;
+	}	
+	
 	@Override
 	public ArquivoConfiguracao getArquivoConfiguracao() {	
 		ArquivoConfiguracao resultado = null;
@@ -13,8 +20,19 @@ public class MeuArquivoConf implements Configuracao {
 
 	@Override
 	public boolean valido() {
-		// TODO Auto-generated method stub
-		return false;
+
+		boolean resultado = false;
+		
+		if((ArquivoConfiguracao.class.cast(config).getPort() >= 1024)
+			&& (ArquivoConfiguracao.class.cast(config).getPort()<= 65535)
+			&& (ArquivoConfiguracao.class.cast(config).getRootDir().equals("./html"))
+			&& (ArquivoConfiguracao.class.cast(config).getErrorDir().equals("./html/error/"))) {
+		
+				resultado = true;
+		}
+		
+		
+		return resultado;
 	}
 
 }
