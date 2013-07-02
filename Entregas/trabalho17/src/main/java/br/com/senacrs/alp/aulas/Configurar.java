@@ -74,6 +74,7 @@ public class Configurar implements ArquivoConfiguracao {
 		return valor;
 
 	}
+	
 	@Override
 	public String getRootDir() {
 		return dicionario.get(ROT_DIR);
