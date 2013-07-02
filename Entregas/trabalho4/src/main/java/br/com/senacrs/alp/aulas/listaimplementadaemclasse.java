@@ -9,19 +9,16 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 	
 	@Override
 	public void adicionarFinal(T valor) {
-		// TODO Auto-generated method stub
 		adicionarPosicao(obterTamanho(), valor);
 	}
 
 	@Override
 	public void adicionarInicio(T valor) {
-		// TODO Auto-generated method stub
 		adicionarPosicao(0, valor);
 	}
 
 	@Override
 	public void adicionarPosicao(int posicao, T valor) {
-		// TODO Auto-generated method stub
 		Nodo<T> novo = new Nodo<T>();
 		Nodo<T> corredor;
 		if (valor == null){
@@ -41,21 +38,18 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 
 	@Override
 	public T obterPrimeiro() {
-		// TODO Auto-generated method stub
 		T resultado = obterPosicao(0);
 		return resultado;
 	}
 
 	@Override
 	public T obterUltimo() {
-		// TODO Auto-generated method stub
 		T resultado = obterPosicao(obterTamanho()-1);;
 		return resultado;
 	}
 
 	@Override
 	public Nodo<T> obterNodoPosicao(int posicao) {
-		// TODO Auto-generated method stub
 		int cont=-1;
 		Nodo<T> corredor = new Nodo<T>();
 		corredor = inicio;
@@ -68,7 +62,6 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 
 	@Override
 	public int obterTamanho() {
-		// TODO Auto-generated method stub		
 		int tamanho=0;
 		Nodo<T> corredor = new Nodo<T>();
 		corredor = inicio;
@@ -81,7 +74,6 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 
 	@Override
 	public T removerPosicao(int posicao) {
-		// TODO Auto-generated method stub
 		Nodo<T> corredor=obterNodoPosicao(posicao-1);
 		if (posicao < 0){
 			throw new IllegalArgumentException();
@@ -98,7 +90,6 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 
 	@Override
 	public void esvaziar() {
-		// TODO Auto-generated method stub
 		int x = obterTamanho()-1;
 		while (x!=-1){
 			removerPosicao(x);
@@ -108,7 +99,6 @@ public class listaimplementadaemclasse<T> implements Lista<T>{
 
 	@Override
 	public T obterPosicao(int posicao) {
-		// TODO Auto-generated method stub
 		if (obterTamanho()==0){
 			throw new IllegalArgumentException();
 		}

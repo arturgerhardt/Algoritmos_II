@@ -1,5 +1,6 @@
 package br.com.senacrs.alp.aulas;
 
-public interface Aluno {
+import org.mockito.internal.matchers.InstanceOf;
 
+public interface Aluno {
 }
